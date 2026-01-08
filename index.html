@@ -3,16 +3,16 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Casa Vacanze Aurora • Relax & Comfort</title>
+  <title>Rifugio tra Etna e mare • Relax & Comfort</title>
   <meta name="description" content="Casa vacanze accogliente, ideale per coppie e famiglie. Prenota il tuo soggiorno." />
   <style>
     :root{
-      --bg:#0b1220;
-      --card:#0f1b33;
-      --muted:#9fb0d0;
-      --text:#eaf0ff;
-      --accent:#7dd3fc;
-      --accent2:#a7f3d0;
+      --bg:#fafafa;
+      --card:#ffffff;
+      --muted:#222222;
+      --text:#222222;
+      --accent:#ffffff;
+      --accent2:#ff7514;
       --border:rgba(255,255,255,.10);
       --shadow: 0 12px 30px rgba(0,0,0,.35);
       --radius: 18px;
@@ -24,7 +24,6 @@
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
       color:var(--text);
       background: radial-gradient(1200px 500px at 70% -10%, rgba(125,211,252,.18), transparent 60%),
-                  radial-gradient(900px 400px at 10% 10%, rgba(167,243,208,.14), transparent 55%),
                   var(--bg);
       line-height:1.5;
     }
@@ -35,7 +34,7 @@
       gap:16px;
       padding:14px 18px;
       border:1px solid var(--border);
-      background: rgba(15,27,51,.55);
+      background: rgba(255,255,255,0.85);
       backdrop-filter: blur(10px);
       border-radius: 999px;
       box-shadow: var(--shadow);
@@ -45,7 +44,6 @@
     .dot{
       width:12px; height:12px; border-radius:50%;
       background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: 0 0 0 6px rgba(125,211,252,.12);
     }
     .nav a{
       text-decoration:none;
@@ -67,8 +65,8 @@
       box-shadow: 0 10px 22px rgba(0,0,0,.22);
     }
     .btn.primary{
-      border-color: rgba(125,211,252,.35);
-      background: linear-gradient(135deg, rgba(125,211,252,.18), rgba(167,243,208,.12));
+      border-color: rgba(255,255,0,.12);
+      background: linear-gradient(135deg, rgba(255,255,0,.12), rgba(255,255,0,.12));
     }
     .btn:hover{transform: translateY(-1px)}
     .hero{
@@ -84,7 +82,7 @@
     }
     .panel{
       border:1px solid var(--border);
-      background: rgba(15,27,51,.45);
+      background: rgba(250, 250, 250,1);
       backdrop-filter: blur(10px);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
@@ -160,7 +158,7 @@
       width:42px; height:42px;
       border-radius: 999px;
       border:1px solid var(--border);
-      background: rgba(15,27,51,.55);
+      background: rgba(250,250,250,1);
       backdrop-filter: blur(8px);
       color:var(--text);
       cursor:pointer;
@@ -177,7 +175,7 @@
     }
     .dotBtn.active{
       width:22px;
-      background: linear-gradient(135deg, rgba(125,211,252,.85), rgba(167,243,208,.75));
+      background: linear-gradient(135deg, rgba(125,211,252,.85), rgba(255,255,0,.75));
       border-color: transparent;
     }
     .caption{
@@ -210,7 +208,7 @@
     .card p{margin:0; color: var(--muted)}
     .icon{
       width:40px; height:40px; border-radius:14px;
-      background: linear-gradient(135deg, rgba(125,211,252,.18), rgba(167,243,208,.10));
+      background: linear-gradient(135deg, rgba(125,211,252,.18), rgba(255,255,0,.10));
       border:1px solid rgba(125,211,252,.25);
       display:grid; place-items:center;
       margin-bottom:10px;
@@ -260,7 +258,7 @@
     <header class="nav">
       <div class="brand">
         <span class="dot" aria-hidden="true"></span>
-        <span>Casa Vacanze Aurora</span>
+        <span>Rifugio tra Etna e mare</span>
       </div>
       <nav class="navlinks" aria-label="Menu">
         <a href="#servizi">Servizi</a>
@@ -280,7 +278,7 @@
         </p>
 
         <div class="pillrow" aria-label="Punti di forza">
-          <span class="pill">🛏️ 2–4 ospiti</span>
+          <span class="pill">🛏️ 1–5 ospiti</span>
           <span class="pill">🚿 1 bagno</span>
           <span class="pill">📶 Wi-Fi</span>
           <span class="pill">❄️ Aria condizionata</span>
@@ -289,14 +287,10 @@
 
         <div class="ctas">
           <!-- Sostituisci link WhatsApp e/o portale prenotazioni -->
-          <a class="btn primary" href="https://wa.me/39INSERISCI_NUMERO?text=Ciao!%20Vorrei%20informazioni%20per%20un%20soggiorno." target="_blank" rel="noopener">
+          <a class="btn primary" href="https://wa.me/393475928634?text=Ciao!%20Vorrei%20informazioni%20per%20un%20soggiorno." target="_blank" rel="noopener">
             💬 Scrivici su WhatsApp
           </a>
           <a class="btn" href="#contatti">📅 Verifica disponibilità</a>
-        </div>
-
-        <div class="small">
-          * Personalizza testi, servizi e contatti in base alla tua casa vacanze.
         </div>
       </div>
 
@@ -362,9 +356,9 @@
         Inserisci una breve descrizione della zona: mare/centro storico/trasporti/parcheggio ecc.
       </p>
       <div class="contactBox">
-        <span class="chip">📍 Indirizzo: Via Esempio 10, Città</span>
-        <span class="chip">🚗 Parcheggio: (gratis / in strada / a pagamento)</span>
-        <span class="chip">🚌 Mezzi: (fermata / stazione vicina)</span>
+        <span class="chip">📍 Indirizzo: Via San Giuseppe 37, Mascali</span>
+        <span class="chip">🚗 Parcheggio: gratuito in strada </span>
+        <span class="chip">🚌 Su richiesta transfer da/per aeroporto con compagnia esterna</span>
       </div>
 
       <hr class="hr" />
@@ -372,11 +366,26 @@
       <!-- Mappa: sostituisci con il tuo embed Google Maps -->
       <div style="border:1px solid var(--border); border-radius:14px; overflow:hidden; background: rgba(255,255,255,.03)">
         <iframe
-          title="Mappa"
-          src="https://www.google.com/maps?q=Catania&output=embed"
-          width="100%" height="320" style="border:0; display:block"
-          loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+          <iframe
+  		title="Mappa - Via San Giuseppe 37, Mascali"
+  		src="https://www.google.com/maps?q=Via%20San%20Giuseppe%2037%2C%20Mascali%20CT%2C%20Italia&output=embed"
+  		width="100%"
+  		height="320"
+  		style="border:0; display:block; border-radius:14px;"
+ 	 	loading="lazy"
+  		referrerpolicy="no-referrer-when-downgrade">
+	  </iframe>
+
         </iframe>
+	<div style="display:flex; justify-content:center; margin-top:12px">
+  		<a class="btn" 
+     			href="https://www.google.com/maps?q=Via%20San%20Giuseppe%2037%2C%20Mascali%20CT%2C%20Italia"
+     			target="_blank" 
+     			rel="noopener">
+    			🗺️ Apri su Google Maps
+  		</a>
+	</div>
+
       </div>
     </section>
 
@@ -387,61 +396,73 @@
       </p>
 
       <div class="contactBox">
-        <a class="btn primary" href="https://wa.me/39INSERISCI_NUMERO?text=Ciao!%20Vorrei%20prenotare%20un%20soggiorno." target="_blank" rel="noopener">
+        <a class="btn primary" href="https://wa.me/393475928634?text=Ciao!%20Vorrei%20prenotare%20un%20soggiorno." target="_blank" rel="noopener">
           💬 WhatsApp
         </a>
-        <a class="btn" href="mailto:info@tuadominio.it?subject=Richiesta%20informazioni%20Casa%20Vacanze">
+        <a class="btn" href="mailto:etnaseacv@gmail.com?subject=Richiesta%20informazioni%20Casa%20Vacanze">
           ✉️ Email
         </a>
-        <a class="btn" href="tel:+39INSERISCI_NUMERO">
+        <a class="btn" href="tel:+393475928634">
           📞 Chiama
         </a>
       </div>
     </section>
 
     <div class="footer">
-      © <span id="year"></span> Casa Vacanze Aurora • Tutti i diritti riservati
+      © <span id="year"></span> Rifugio tra Etna e mare • Tutti i diritti riservati
     </div>
   </div>
 
   <script>
-    // ✅ Sostituisci queste immagini con le tue (URL o percorsi locali tipo "img/1.jpg")
     const images = [
-      "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1600&q=80",
-      "https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?auto=format&fit=crop&w=1600&q=80",
-      "https://images.unsplash.com/photo-1505692952047-1a78307da8f2?auto=format&fit=crop&w=1600&q=80",
-      "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1600&q=80",
-      "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1600&q=80"
-    ];
+    "img/1.jpg",
+    "img/2.jpg",
+    "img/3.jpg",
+    "img/4.jpg",
+    "img/5.jpg",
+    "img/6.jpg",
+  ];
 
-    let idx = 0;
-    const slide = document.getElementById("slide");
-    const prev = document.getElementById("prev");
-    const next = document.getElementById("next");
-    const dotsWrap = document.getElementById("dots");
-    const counter = document.getElementById("counter");
+  let idx = 0;
+  const slide = document.getElementById("slide");
+  const prev = document.getElementById("prev");
+  const next = document.getElementById("next");
+  const dotsWrap = document.getElementById("dots");
+  const counter = document.getElementById("counter");
 
-    function renderDots() {
-      dotsWrap.innerHTML = "";
-      images.forEach((_, i) => {
-        const b = document.createElement("button");
-        b.className = "dotBtn" + (i === idx ? " active" : "");
-        b.setAttribute("aria-label", `Vai alla foto ${i + 1}`);
-        b.addEventListener("click", () => { idx = i; update(); resetAuto(); });
-        dotsWrap.appendChild(b);
-      });
-    }
+  function renderDots() {
+    dotsWrap.innerHTML = "";
+    images.forEach((_, i) => {
+      const b = document.createElement("button");
+      b.className = "dotBtn" + (i === idx ? " active" : "");
+      b.setAttribute("aria-label", `Vai alla foto ${i + 1}`);
+      b.addEventListener("click", () => { idx = i; update(); resetAuto(); });
+      dotsWrap.appendChild(b);
+    });
+  }
 
-    function update() {
-      slide.src = images[idx];
-      counter.textContent = `${idx + 1} / ${images.length}`;
-      renderDots();
-    }
+  function update() {
+    slide.src = images[idx];
+    counter.textContent = `${idx + 1} / ${images.length}`;
+    renderDots();
+  }
 
-    function go(delta) {
-      idx = (idx + delta + images.length) % images.length;
-      update();
-    }
+  function go(delta) {
+    idx = (idx + delta + images.length) % images.length;
+    update();
+  }
+
+  prev.addEventListener("click", () => { go(-1); resetAuto(); });
+  next.addEventListener("click", () => { go(+1); resetAuto(); });
+
+  let interval = setInterval(() => go(+1), 5000);
+  function resetAuto(){
+    clearInterval(interval);
+    interval = setInterval(() => go(+1), 5000);
+  }
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+  update();
 
     prev.addEventListener("click", () => { go(-1); resetAuto(); });
     next.addEventListener("click", () => { go(+1); resetAuto(); });
