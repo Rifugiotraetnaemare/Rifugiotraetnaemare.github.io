@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Casa Vacanze Aurora • Relax & Comfort</title>
+  <meta name="description" content="Casa vacanze accogliente, ideale per coppie e famiglie. Prenota il tuo soggiorno." />
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#0f1b33;
+      --muted:#9fb0d0;
+      --text:#eaf0ff;
+      --accent:#7dd3fc;
+      --accent2:#a7f3d0;
+      --border:rgba(255,255,255,.10);
+      --shadow: 0 12px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 1120px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background: radial-gradient(1200px 500px at 70% -10%, rgba(125,211,252,.18), transparent 60%),
+                  radial-gradient(900px 400px at 10% 10%, rgba(167,243,208,.14), transparent 55%),
+                  var(--bg);
+      line-height:1.5;
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:24px}
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:16px;
+      padding:14px 18px;
+      border:1px solid var(--border);
+      background: rgba(15,27,51,.55);
+      backdrop-filter: blur(10px);
+      border-radius: 999px;
+      box-shadow: var(--shadow);
+      position: sticky; top:14px; z-index:30;
+    }
+    .brand{display:flex; align-items:center; gap:10px; font-weight:700}
+    .dot{
+      width:12px; height:12px; border-radius:50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 6px rgba(125,211,252,.12);
+    }
+    .nav a{
+      text-decoration:none;
+      font-weight:600;
+      color: var(--muted);
+    }
+    .nav a:hover{color:var(--text)}
+    .navlinks{display:flex; gap:14px; align-items:center; flex-wrap:wrap; justify-content:flex-end}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius: 999px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.06);
+      text-decoration:none;
+      font-weight:700;
+      color:var(--text);
+      box-shadow: 0 10px 22px rgba(0,0,0,.22);
+    }
+    .btn.primary{
+      border-color: rgba(125,211,252,.35);
+      background: linear-gradient(135deg, rgba(125,211,252,.18), rgba(167,243,208,.12));
+    }
+    .btn:hover{transform: translateY(-1px)}
+    .hero{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:22px;
+      align-items:stretch;
+      margin-top:22px;
+    }
+    @media (max-width: 960px){
+      .hero{grid-template-columns:1fr; }
+      .nav{border-radius: 18px}
+    }
+    .panel{
+      border:1px solid var(--border);
+      background: rgba(15,27,51,.45);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .heroText{padding:28px}
+    .kicker{
+      display:inline-flex;
+      gap:10px; align-items:center;
+      padding:6px 10px;
+      border-radius: 999px;
+      border:1px solid var(--border);
+      color: var(--muted);
+      background: rgba(255,255,255,.04);
+      font-weight:700;
+      font-size: 13px;
+    }
+    h1{
+      margin:14px 0 10px;
+      font-size: clamp(30px, 3.6vw, 44px);
+      line-height:1.1;
+      letter-spacing:-.02em;
+    }
+    .lead{
+      color: var(--muted);
+      font-size: 16px;
+      margin:0 0 18px;
+      max-width: 60ch;
+    }
+    .pillrow{display:flex; flex-wrap:wrap; gap:10px; margin:16px 0 22px}
+    .pill{
+      padding:8px 10px;
+      border:1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      font-weight:700;
+      font-size: 13px;
+    }
+    .ctas{display:flex; flex-wrap:wrap; gap:10px}
+    .small{
+      color: var(--muted);
+      font-size: 12px;
+      margin-top:12px;
+    }
+
+    /* Carousel */
+    .carousel{
+      position:relative;
+      min-height: 360px;
+      display:flex;
+      align-items:stretch;
+    }
+    .carousel img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      display:block;
+      filter: saturate(1.02) contrast(1.02);
+    }
+    .cgrad{
+      position:absolute; inset:0;
+      background: linear-gradient(180deg, rgba(11,18,32,.15), rgba(11,18,32,.55));
+      pointer-events:none;
+    }
+    .cbar{
+      position:absolute;
+      left:16px; right:16px; bottom:14px;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px;
+    }
+    .cbtn{
+      width:42px; height:42px;
+      border-radius: 999px;
+      border:1px solid var(--border);
+      background: rgba(15,27,51,.55);
+      backdrop-filter: blur(8px);
+      color:var(--text);
+      cursor:pointer;
+      display:grid; place-items:center;
+      box-shadow: 0 10px 22px rgba(0,0,0,.22);
+    }
+    .cbtn:hover{transform: translateY(-1px)}
+    .dots{display:flex; gap:8px; align-items:center; justify-content:center; flex:1}
+    .dotBtn{
+      width:10px; height:10px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.28);
+      background: rgba(255,255,255,.10);
+      cursor:pointer;
+    }
+    .dotBtn.active{
+      width:22px;
+      background: linear-gradient(135deg, rgba(125,211,252,.85), rgba(167,243,208,.75));
+      border-color: transparent;
+    }
+    .caption{
+      position:absolute;
+      top:16px; left:16px; right:16px;
+      display:flex; gap:10px; align-items:center; justify-content:space-between;
+      color: rgba(255,255,255,.92);
+      font-weight:800;
+      text-shadow: 0 10px 20px rgba(0,0,0,.55);
+    }
+    .badge{
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.20);
+      background: rgba(15,27,51,.35);
+      backdrop-filter: blur(8px);
+      font-size: 13px;
+    }
+
+    /* Sections */
+    section{margin-top:24px}
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    @media (max-width: 960px){ .grid3{grid-template-columns:1fr} }
+    .card{padding:18px}
+    .card h3{margin:0 0 8px; font-size: 18px}
+    .card p{margin:0; color: var(--muted)}
+    .icon{
+      width:40px; height:40px; border-radius:14px;
+      background: linear-gradient(135deg, rgba(125,211,252,.18), rgba(167,243,208,.10));
+      border:1px solid rgba(125,211,252,.25);
+      display:grid; place-items:center;
+      margin-bottom:10px;
+      font-size: 18px;
+    }
+
+    .split{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+    }
+    @media (max-width: 960px){ .split{grid-template-columns:1fr} }
+    .list{
+      margin:0; padding-left:18px; color: var(--muted);
+    }
+    .list li{margin:8px 0}
+
+    .footer{
+      margin:30px 0 6px;
+      color: var(--muted);
+      text-align:center;
+      font-size: 13px;
+    }
+    .hr{
+      height:1px; background: rgba(255,255,255,.10);
+      margin:18px 0;
+      border:0;
+    }
+    .contactBox{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+      margin-top:12px;
+    }
+    .chip{
+      padding:8px 10px;
+      border:1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      font-weight:700;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header class="nav">
+      <div class="brand">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Casa Vacanze Aurora</span>
+      </div>
+      <nav class="navlinks" aria-label="Menu">
+        <a href="#servizi">Servizi</a>
+        <a href="#dettagli">Dettagli</a>
+        <a href="#dove">Dove siamo</a>
+        <a class="btn primary" href="#contatti">Prenota</a>
+      </nav>
+    </header>
+
+    <main class="hero" id="top">
+      <div class="panel heroText">
+        <span class="kicker">✨ Relax • Comfort • Posizione top</span>
+        <h1>La tua casa vacanze perfetta, a due passi da tutto.</h1>
+        <p class="lead">
+          Ambienti curati, self check-in, Wi-Fi veloce e tutto il necessario per sentirti subito a casa.
+          Ideale per coppie, famiglie e smart working.
+        </p>
+
+        <div class="pillrow" aria-label="Punti di forza">
+          <span class="pill">🛏️ 2–4 ospiti</span>
+          <span class="pill">🚿 1 bagno</span>
+          <span class="pill">📶 Wi-Fi</span>
+          <span class="pill">❄️ Aria condizionata</span>
+          <span class="pill">🔑 Self check-in</span>
+        </div>
+
+        <div class="ctas">
+          <!-- Sostituisci link WhatsApp e/o portale prenotazioni -->
+          <a class="btn primary" href="https://wa.me/39INSERISCI_NUMERO?text=Ciao!%20Vorrei%20informazioni%20per%20un%20soggiorno." target="_blank" rel="noopener">
+            💬 Scrivici su WhatsApp
+          </a>
+          <a class="btn" href="#contatti">📅 Verifica disponibilità</a>
+        </div>
+
+        <div class="small">
+          * Personalizza testi, servizi e contatti in base alla tua casa vacanze.
+        </div>
+      </div>
+
+      <div class="panel carousel" aria-label="Carosello immagini">
+        <div class="caption">
+          <div class="badge">📸 Gallery</div>
+          <div class="badge" id="counter">1 / 5</div>
+        </div>
+
+        <img id="slide" alt="Foto della casa vacanze" />
+        <div class="cgrad" aria-hidden="true"></div>
+
+        <div class="cbar">
+          <button class="cbtn" id="prev" aria-label="Foto precedente">‹</button>
+          <div class="dots" id="dots" aria-label="Selettore foto"></div>
+          <button class="cbtn" id="next" aria-label="Foto successiva">›</button>
+        </div>
+      </div>
+    </main>
+
+    <section id="servizi" class="grid3">
+      <div class="panel card">
+        <div class="icon">🧼</div>
+        <h3>Pulizia & biancheria</h3>
+        <p>Ambienti igienizzati e biancheria pulita ad ogni cambio ospiti.</p>
+      </div>
+      <div class="panel card">
+        <div class="icon">🍽️</div>
+        <h3>Cucina attrezzata</h3>
+        <p>Stoviglie, utensili e tutto l’essenziale per colazioni e cene in casa.</p>
+      </div>
+      <div class="panel card">
+        <div class="icon">🗝️</div>
+        <h3>Check-in semplice</h3>
+        <p>Istruzioni chiare e supporto rapido per qualsiasi necessità.</p>
+      </div>
+    </section>
+
+    <section id="dettagli" class="split">
+      <div class="panel card">
+        <h3>Dettagli della casa</h3>
+        <ul class="list">
+          <li>Camera da letto + zona living (personalizza in base alla tua casa)</li>
+          <li>Aria condizionata / riscaldamento</li>
+          <li>Wi-Fi adatto anche allo smart working</li>
+          <li>TV, asciugacapelli, ferro da stiro (se disponibili)</li>
+        </ul>
+      </div>
+      <div class="panel card">
+        <h3>Regole della casa</h3>
+        <ul class="list">
+          <li>Check-in: 15:00 • Check-out: 10:00 (modifica a piacere)</li>
+          <li>No smoking (se vale)</li>
+          <li>Animali: su richiesta (se vale)</li>
+          <li>Silenzio nelle ore serali per rispetto del vicinato</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="dove" class="panel card">
+      <h3>Dove siamo</h3>
+      <p style="color:var(--muted); margin-top:0">
+        Inserisci una breve descrizione della zona: mare/centro storico/trasporti/parcheggio ecc.
+      </p>
+      <div class="contactBox">
+        <span class="chip">📍 Indirizzo: Via Esempio 10, Città</span>
+        <span class="chip">🚗 Parcheggio: (gratis / in strada / a pagamento)</span>
+        <span class="chip">🚌 Mezzi: (fermata / stazione vicina)</span>
+      </div>
+
+      <hr class="hr" />
+
+      <!-- Mappa: sostituisci con il tuo embed Google Maps -->
+      <div style="border:1px solid var(--border); border-radius:14px; overflow:hidden; background: rgba(255,255,255,.03)">
+        <iframe
+          title="Mappa"
+          src="https://www.google.com/maps?q=Catania&output=embed"
+          width="100%" height="320" style="border:0; display:block"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </section>
+
+    <section id="contatti" class="panel card">
+      <h3>Contatti e prenotazioni</h3>
+      <p style="color:var(--muted); margin-top:0">
+        Scrivici per disponibilità, prezzi e richieste particolari. Rispondiamo rapidamente.
+      </p>
+
+      <div class="contactBox">
+        <a class="btn primary" href="https://wa.me/39INSERISCI_NUMERO?text=Ciao!%20Vorrei%20prenotare%20un%20soggiorno." target="_blank" rel="noopener">
+          💬 WhatsApp
+        </a>
+        <a class="btn" href="mailto:info@tuadominio.it?subject=Richiesta%20informazioni%20Casa%20Vacanze">
+          ✉️ Email
+        </a>
+        <a class="btn" href="tel:+39INSERISCI_NUMERO">
+          📞 Chiama
+        </a>
+      </div>
+    </section>
+
+    <div class="footer">
+      © <span id="year"></span> Casa Vacanze Aurora • Tutti i diritti riservati
+    </div>
+  </div>
+
+  <script>
+    // ✅ Sostituisci queste immagini con le tue (URL o percorsi locali tipo "img/1.jpg")
+    const images = [
+      "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1505692952047-1a78307da8f2?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1600&q=80"
+    ];
+
+    let idx = 0;
+    const slide = document.getElementById("slide");
+    const prev = document.getElementById("prev");
+    const next = document.getElementById("next");
+    const dotsWrap = document.getElementById("dots");
+    const counter = document.getElementById("counter");
+
+    function renderDots() {
+      dotsWrap.innerHTML = "";
+      images.forEach((_, i) => {
+        const b = document.createElement("button");
+        b.className = "dotBtn" + (i === idx ? " active" : "");
+        b.setAttribute("aria-label", `Vai alla foto ${i + 1}`);
+        b.addEventListener("click", () => { idx = i; update(); resetAuto(); });
+        dotsWrap.appendChild(b);
+      });
+    }
+
+    function update() {
+      slide.src = images[idx];
+      counter.textContent = `${idx + 1} / ${images.length}`;
+      renderDots();
+    }
+
+    function go(delta) {
+      idx = (idx + delta + images.length) % images.length;
+      update();
+    }
+
+    prev.addEventListener("click", () => { go(-1); resetAuto(); });
+    next.addEventListener("click", () => { go(+1); resetAuto(); });
+
+    // Autoplay (puoi disattivarlo mettendo interval = null)
+    let interval = setInterval(() => go(+1), 5000);
+    function resetAuto(){
+      if(!interval) return;
+      clearInterval(interval);
+      interval = setInterval(() => go(+1), 5000);
+    }
+
+    // Swipe su mobile
+    let startX = null;
+    slide.addEventListener("touchstart", (e) => startX = e.touches[0].clientX, {passive:true});
+    slide.addEventListener("touchend", (e) => {
+      if(startX === null) return;
+      const endX = e.changedTouches[0].clientX;
+      const diff = endX - startX;
+      if(Math.abs(diff) > 40) { diff > 0 ? go(-1) : go(+1); resetAuto(); }
+      startX = null;
+    });
+
+    // Init
+    document.getElementById("year").textContent = new Date().getFullYear();
+    update();
+  </script>
+</body>
+</html>
