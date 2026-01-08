@@ -250,6 +250,11 @@
       font-weight:700;
       font-size: 13px;
     }
+    .narrow{
+  	max-width: 1080px;   /* puoi provare 640 / 680 / 720 */
+  	margin: 0 auto;     /* centra la sezione */
+    }
+
   </style>
 </head>
 
@@ -363,33 +368,32 @@
 
       <hr class="hr" />
 
-      <!-- Mappa: sostituisci con il tuo embed Google Maps -->
       <div style="border:1px solid var(--border); border-radius:14px; overflow:hidden; background: rgba(255,255,255,.03)">
-        <iframe
-          <iframe
-  		title="Mappa - Via San Giuseppe 37, Mascali"
-  		src="https://www.google.com/maps?q=Via%20San%20Giuseppe%2037%2C%20Mascali%20CT%2C%20Italia&output=embed"
-  		width="100%"
-  		height="320"
-  		style="border:0; display:block; border-radius:14px;"
- 	 	loading="lazy"
-  		referrerpolicy="no-referrer-when-downgrade">
-	  </iframe>
+  <iframe
+    title="Mappa - Via San Giuseppe 37, Mascali"
+    src="https://www.google.com/maps?q=Via%20San%20Giuseppe%2037%2C%20Mascali%20CT%2C%20Italia&output=embed"
+    width="100%"
+    height="320"
+    style="border:0; display:block;"
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>
 
-        </iframe>
-	<div style="display:flex; justify-content:center; margin-top:12px">
-  		<a class="btn" 
-     			href="https://www.google.com/maps?q=Via%20San%20Giuseppe%2037%2C%20Mascali%20CT%2C%20Italia"
-     			target="_blank" 
-     			rel="noopener">
-    			🗺️ Apri su Google Maps
-  		</a>
-	</div>
+<div style="display:flex; justify-content:center; margin-top:12px">
+  <a class="btn"
+     href="https://www.google.com/maps?q=Via%20San%20Giuseppe%2037%2C%20Mascali%20CT%2C%20Italia"
+     target="_blank"
+     rel="noopener">
+    🗺️ Apri su Google Maps
+  </a>
+</div>
+
 
       </div>
     </section>
 
-    <section id="contatti" class="panel card">
+    <section id="contatti" class="panel card narrow">
       <h3>Contatti e prenotazioni</h3>
       <p style="color:var(--muted); margin-top:0">
         Scrivici per disponibilità, prezzi e richieste particolari. Rispondiamo rapidamente.
@@ -414,26 +418,34 @@
   </div>
 
   <script>
-    const images = [
+document.addEventListener("DOMContentLoaded", () => {
+  const images = [
     "img/1.jpg",
     "img/2.jpg",
     "img/3.jpg",
     "img/4.jpg",
     "img/5.jpg",
-    "img/6.jpg",
+    "img/6.jpg"
   ];
 
   let idx = 0;
+
   const slide = document.getElementById("slide");
   const prev = document.getElementById("prev");
   const next = document.getElementById("next");
   const dotsWrap = document.getElementById("dots");
   const counter = document.getElementById("counter");
 
+  if (!slide || !prev || !next || !dotsWrap || !counter) {
+    console.error("Carousel: manca un elemento con id slide/prev/next/dots/counter");
+    return;
+  }
+
   function renderDots() {
     dotsWrap.innerHTML = "";
     images.forEach((_, i) => {
       const b = document.createElement("button");
+      b.type = "button";
       b.className = "dotBtn" + (i === idx ? " active" : "");
       b.setAttribute("aria-label", `Vai alla foto ${i + 1}`);
       b.addEventListener("click", () => { idx = i; update(); resetAuto(); });
@@ -452,43 +464,39 @@
     update();
   }
 
+  // Se un file non esiste, lo segnala in console
+  slide.addEventListener("error", () => {
+    console.error("Immagine non trovata:", images[idx]);
+  });
+
   prev.addEventListener("click", () => { go(-1); resetAuto(); });
   next.addEventListener("click", () => { go(+1); resetAuto(); });
 
+  // Autoplay
   let interval = setInterval(() => go(+1), 5000);
   function resetAuto(){
     clearInterval(interval);
     interval = setInterval(() => go(+1), 5000);
   }
 
-  document.getElementById("year").textContent = new Date().getFullYear();
+  // Swipe su mobile
+  let startX = null;
+  slide.addEventListener("touchstart", (e) => startX = e.touches[0].clientX, {passive:true});
+  slide.addEventListener("touchend", (e) => {
+    if(startX === null) return;
+    const endX = e.changedTouches[0].clientX;
+    const diff = endX - startX;
+    if(Math.abs(diff) > 40) { diff > 0 ? go(-1) : go(+1); resetAuto(); }
+    startX = null;
+  });
+
+  // Footer year
+  const y = document.getElementById("year");
+  if (y) y.textContent = new Date().getFullYear();
+
   update();
+});
+</script>
 
-    prev.addEventListener("click", () => { go(-1); resetAuto(); });
-    next.addEventListener("click", () => { go(+1); resetAuto(); });
-
-    // Autoplay (puoi disattivarlo mettendo interval = null)
-    let interval = setInterval(() => go(+1), 5000);
-    function resetAuto(){
-      if(!interval) return;
-      clearInterval(interval);
-      interval = setInterval(() => go(+1), 5000);
-    }
-
-    // Swipe su mobile
-    let startX = null;
-    slide.addEventListener("touchstart", (e) => startX = e.touches[0].clientX, {passive:true});
-    slide.addEventListener("touchend", (e) => {
-      if(startX === null) return;
-      const endX = e.changedTouches[0].clientX;
-      const diff = endX - startX;
-      if(Math.abs(diff) > 40) { diff > 0 ? go(-1) : go(+1); resetAuto(); }
-      startX = null;
-    });
-
-    // Init
-    document.getElementById("year").textContent = new Date().getFullYear();
-    update();
-  </script>
 </body>
 </html>
